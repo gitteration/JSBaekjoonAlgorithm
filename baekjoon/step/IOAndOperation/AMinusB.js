@@ -7,7 +7,7 @@ const rl = readline.createInterface({ input, output });
 		line = line.split(' ');
 		const A = Number(line[0])
 		const B = Number(line[1])
-		console.log(A + B);
+		console.log(A - B);
 		rl.close();
 	})
 })()
