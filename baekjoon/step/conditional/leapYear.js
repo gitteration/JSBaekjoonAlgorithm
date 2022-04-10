@@ -59,12 +59,10 @@ rl.on('line', (line) => {
 	const year = Number(line);
 	let remainder1 = year % 4;
 	let remainder2 = year % 400;
-	let result = 0;
+	let remainder3 = year % 100;
+	let result = 0; 
 	if(remainder1 === 0){
-		result = 1;
-	}
-	if(remainder2 === 100 || remainder2 === 200 || remainder2 === 300){
-		result = 0;
+		result = remainder2 === 0 || remainder3 != 0 ? 1 : 0;
 	}
 	console.log(result)
 });
