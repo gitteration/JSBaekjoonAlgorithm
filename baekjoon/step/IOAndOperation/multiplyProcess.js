@@ -32,7 +32,6 @@
 */
 
 // 풀이
-const {promisify} = require('util'); 
 const {stdin: input, stdout: output} = require('process');
 const readline =  require('readline');
 const rl = readline.createInterface({input, output});
