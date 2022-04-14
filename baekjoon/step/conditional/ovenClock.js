@@ -58,6 +58,7 @@ const rl = readline.createInterface({input, output});
 		hour += division;
 		minute = minute - 60 * division;
 		hour = hour >= 24 ? hour - 24 : hour;
+		console.log(hour %= 24)
 	}
 	console.log(`${hour} ${minute}`);
 })();
