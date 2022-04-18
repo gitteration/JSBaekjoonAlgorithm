@@ -26,13 +26,13 @@ const rl = readline.createInterface({input, output});
 
 rl.on('line', (line)=> {
 	const number = Number(line.trim());
+	let stars = '';
+	let white_space = '';
 	let result = '';
-	for(let i=number; i>0; i--){
-		for(let j=1; j<number+1; j++){
-			if(j >= i) result +='*';
-			else result +=' ';
-		}
-		result += `\n`;
+	for(let i=1; i<=number; i++){
+		stars += '*';
+		white_space = ' '.repeat(number-i);
+		result += `${white_space}${stars}\n`
 	}
 	console.log(`${result}`);
 });

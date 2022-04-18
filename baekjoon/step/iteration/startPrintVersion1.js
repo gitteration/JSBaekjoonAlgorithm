@@ -26,11 +26,10 @@ const rl = readline.createInterface({input,output});
 rl.on('line', (line)=>{
 	const number = Number(line.trim());
 	let result = '';
+	let stars = '';
 	for(let i=0; i<number; i++){
-		for(let j=0; j<=i; j++){
-			result += `*`;
-		}
-		result += `\n`;
+		stars += '*';
+		result += `${stars}\n`
 	}
 	console.log(`${result.trim()}`);
 })
