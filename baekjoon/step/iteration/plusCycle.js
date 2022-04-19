@@ -47,21 +47,17 @@ const {stdin: input, stdout: output} = require('process');
 const rl = readline.createInterface({input, output});
 
 rl.on('line', (line)=> {
-	let count = 1;
-	test(line);
-	function test(number){
-		number = String(number);
+	let count = 0;
+	const ori_number = Number(line);
+	let number = String(line);
+	while(true){
 		let number1 = Number(number[1] ? number[0] : 0);
 		let number2 = Number(number[1] ? number[1] : number[0]); 
 		let sum = String(number1 + number2);
 		let sum1 = Number(sum[1] ? sum[1] : sum[0]);
-		let new_number = String(number2) + String(sum1); 
-		if(Number(line) === Number(new_number)){
-			console.log(`${count}`);
-			return;
-		}else{
-			count ++;
-			test(new_number);
-		}
+		number = String(number2) + String(sum1); 
+		count ++;
+		if(ori_number === Number(number)) break;
 	}
+	console.log(`${count}`);
 });
