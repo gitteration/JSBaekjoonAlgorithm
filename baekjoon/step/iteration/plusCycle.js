@@ -47,17 +47,17 @@ const {stdin: input, stdout: output} = require('process');
 const rl = readline.createInterface({input, output});
 
 rl.on('line', (line)=> {
+	line = Number(line);
+	const original_number = line;
+	let new_number = original_number;
 	let count = 0;
-	const ori_number = Number(line);
-	let number = String(line);
 	while(true){
-		let number1 = Number(number[1] ? number[0] : 0);
-		let number2 = Number(number[1] ? number[1] : number[0]); 
-		let sum = String(number1 + number2);
-		let sum1 = Number(sum[1] ? sum[1] : sum[0]);
-		number = String(number2) + String(sum1); 
+		let front_operand = Math.floor(new_number / 10);
+		let back_operand = new_number % 10;
+		let remainder_of_sum = (front_operand + back_operand) % 10;
+		new_number = (back_operand * 10) + remainder_of_sum 
 		count ++;
-		if(ori_number === Number(number)) break;
+		if(original_number === new_number) break;
 	}
 	console.log(`${count}`);
 });
