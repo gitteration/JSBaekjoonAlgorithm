@@ -4,18 +4,33 @@ const readline = require('readline');
 const {stdin: input, stdout: output} = require('process');
 const rl = readline.createInterface({input, output});
 
-let ox;
+let ox = [];
 let line_limit;
+let temp;
 rl.on('line', (line) => {
 	if(!line_limit){
 		line_limit = Number(line);
 	}else{
-		ox = line.trim().split(' ').map(ox => String(ox));
-		line_limit === scores.length ? rl.close() : console.log(`입력하신 배열의 크기가 다릅니다. 입력하신 배열의 크기는 ${limit} 입니다`);
+		line = line.trim().split('').map(value => String(value));
+		ox.push(line);
+		line_limit === ox.length ? rl.close() : undefined;
 	}
 }).on('close', ()=> {
 	let result = '';
 	for(let index in ox){
-		ox[index].red
+		temp = 0;
+		let score = ox[index].reduce(calculate,0);
+		result += `${score}\n`;
 	}
-})
+	console.log(result.trim());
+
+});
+
+function calculate(accumulator, currentValue){
+	if(currentValue === 'O'){
+		accumulator += ++ temp;
+	}else{
+		temp = 0;
+	};
+	return accumulator;
+}
