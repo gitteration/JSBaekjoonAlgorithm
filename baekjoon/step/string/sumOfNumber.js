@@ -14,6 +14,7 @@ function Line(){
         if(number_limit === num.length){
             number = num;
             rl.close();
+            this.setNumber = null;
         }else{
             console.log(`입력하신 숫자의 길이는 ${number_limit}입니다`);
         }
@@ -30,13 +31,13 @@ Line.prototype.sum = (num) => {
 
 
 let line_count = 0;
-const l = new Line()
+const l = new Line();
 rl.on('line', (line) =>{
     if(line_count === 0){
         line = Number(line.trim());
         l.setNumberLimit(line);
     }else{
-        l.setNumber(line)
+        l.setNumber(line);
     }
     line_count ++;   
 }).on('close', () => {
