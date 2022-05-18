@@ -30,9 +30,9 @@ rl.on('line', (line) => {
 		const l = new Line(line[0], line[1]);
 		const [rt, str] = l.getAllInfo();
 		result += l.repeatString(rt, str);
-		if(count == line_limit){
-			console.log(result); 
-			rl.close();
-		}
+	}
+	if(count == line_limit){
+		console.log(result); 
+		rl.close();
 	}
 });
