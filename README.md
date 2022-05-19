@@ -1,6 +1,4 @@
-# JSBaekjoonAlgorithm
-JavaScript BaekjoonAlgorithm study
+# JSAlgorithmStudy
+JavaScript Algorithm study
 
-node veriosn 16.13.2
-
-Baejoon URL = https://www.acmicpc.net/user/khstudent
+Baejoon, Programmers  
