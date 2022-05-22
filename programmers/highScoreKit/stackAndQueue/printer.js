@@ -1,25 +1,26 @@
 // 문제링크 https://programmers.co.kr/learn/courses/30/lessons/42587#
 
 function solution(priorities, location) { 
-	// 순위 초기화
-	let result = 0;
-	// 대기목록이 다 비워질 때 까지
-	while (priorities.length) {
-		// 대기목록 첫번째 요소 배열 최대값보다 작은 경우
-		const max_of_priority = Math.max(...priorities);
-		if (priorities[0] < max_of_priority) {
-			// 첫번째 요소가 자신일 경우 location을 배열 마지막으로 옮김
-			if (--location < 0) location = priorities.length - 1;
-			// 제일 앞 요소를 뺴서 제일 뒤에 넣는다
-			priorities.push(priorities.shift());
-		} else {
-			// 순위를 업데이트 해줌
-			result++;
-			// 배열을 빠져나가는 게 자신일 경우 멈추고 순위를 return
-			if (--location < 0) return result;
-			// 자신이 아니면 제일 앞의 요소 빼낸다.
-			priorities.shift();
-		}
-	}
-	return result;
+    const target = priorities[location];
+    let max_of_index = priorities.indexOf(Math.max(...priorities));
+    let result = 0;
+    // priorities 배열안에 최댓값 인덱스를 기준으로 좌측 요소가 location 위치와 동일하지 않으면서 target보다 작거나 같을 때 해당 요소 삭제
+    for(let i = 0; i < max_of_index; i++){
+        if(i != location && target >= priorities[i]){
+            priorities.splice(i,1);
+            i--;
+            max_of_index--;
+            location--;
+        }
+    }
+    for(let j = max_of_index; j < priorities.length; j++){
+        if(j != location && target > priorities[j]){
+            priorities.splice(j,1);
+            j--;
+            location--;
+        }
+    }
+    console.log(priorities, location)
+    result = priorities.length;
+    return result;
 }
